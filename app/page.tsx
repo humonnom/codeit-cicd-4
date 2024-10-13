@@ -34,7 +34,10 @@ const Translate: React.FC<TranslateProps> = ({ children }) => {
       return translations[text][locale];
     }
     // preview를 확인하는 QA에게 더 많은 정보를 제공해주세요.
-    return text;
+    if (process.env.NEXT_PUBLIC_NODE_ENV === "production") {
+      return text;
+    }
+    return `${text}(경고: 이 문구는 번역되지 않았습니다.)`;
   };
 
   return <p>{translate(children)}</p>;
