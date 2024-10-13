@@ -35,9 +35,9 @@ const Translate: React.FC<TranslateProps> = ({ children }) => {
     }
     // preview를 확인하는 QA에게 더 많은 정보를 제공해주세요.
     if (process.env.SHOW_WARN === "true") {
-      return text;
+      return `${text}(경고: 이 문구는 번역되지 않았습니다.)`;
     }
-    return `${text}(경고: 이 문구는 번역되지 않았습니다.)`;
+    return text;
   };
 
   return <p>{translate(children)}</p>;
